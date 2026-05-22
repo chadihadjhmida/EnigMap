@@ -1,0 +1,151 @@
+</main>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+<script>
+const items = [
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "15",
+  "16",
+  "21",
+  "22",
+  "174",
+  "175",
+  "179",
+  "180",
+  "181",
+  "182",
+  "183",
+  "184",
+  "185",
+  "186",
+  "187",
+  "188",
+  "189",
+  "190",
+  "191",
+  "193",
+  "197",
+  "198",
+  "199",
+  "201",
+  "202",
+  "203",
+  "204",
+  "205",
+  "206",
+  "207",
+  "208",
+  "210",
+  "211",
+  "212",
+  "213",
+  "214",
+  "215",
+  "216",
+  "217",
+  "218",
+  "219",
+  "220",
+  "221",
+  "230",
+  "232",
+  "233",
+  "234",
+  "236",
+  "237",
+  "238",
+  "244",
+  "247",
+  "252",
+  "256",
+  "262",
+  "263",
+  "273",
+  "274",
+  "280",
+  "301",
+  "302",
+  "303",
+  "304",
+  "305",
+  "306",
+  "307",
+  "308",
+  "309",
+  "310",
+  "311",
+  "315",
+  "317",
+  "323",
+  "328",
+  "centre de calcul",
+  "lab130",
+  "lab115",
+  "lab122",
+  "lab126",
+  "lab106",
+  "lab107",
+  "bibliotheque",
+  "lab260",
+  "lab264",
+  "hallchimie",
+  "buvette",
+  "lab5",
+  "AE4",
+  "AE3",
+  "AE2",
+  "AE1",
+  "seminaire2",
+  "seminaire1",
+  "infermerie",
+  "magasin",
+  "A1",
+  "A2",
+  "a48",
+  "a47",
+  "a46",
+  "a45",
+];
+      const fuse = new Fuse(items, {
+          includeScore: true,
+          threshold: 0.3,
+        });
+
+        const input = document.getElementById("serch");
+        const resultsDiv = document.getElementById("results");
+        const form = input.closest("form");
+
+        input.addEventListener("input", () => {
+          const query = input.value.trim();
+          resultsDiv.innerHTML = "";
+
+          if (!query) return;
+
+          const results = fuse.search(query).map((r) => r.item);
+
+          results.forEach((item) => {
+            const option = document.createElement("div");
+            option.textContent = item;
+
+            option.onclick = () => {
+              // Add selected item at bottom
+              input.value = item;
+              form.submit();
+              // Clear results & input
+              resultsDiv.innerHTML = "";
+              input.value = "";
+            };
+
+            resultsDiv.appendChild(option);
+          });
+        });
+</script>
+
+</body>
+</html>
